@@ -8,6 +8,9 @@ public class Principal {
     public static void mostrarMenu() {
         Scanner sc = new Scanner(System.in);
         while (true) {
+            System.out.println("--------------------------------------------------------------------");
+            System.out.println("----------------------MENU VEHICULOS Y SENSORES---------------------");
+            System.out.println("--------------------------------------------------------------------");
             System.out.println("Opcion 0: Terminar programa");
             System.out.println("Opcion 1: Ingresar un nuevo vehículo");
             System.out.println("Opcion 2: Ver informacíon de vehículos almacenados");
@@ -19,6 +22,8 @@ public class Principal {
             System.out.println("Opcion 8: Ver cantidad de sensores almacenados");
             System.out.println("Opcion 9: Ver informacíon de sensores de temperatura");
             System.out.println("Opcion 666: Ver informacíon de sensores temperatura por valor");
+            System.out.println("--------------------------------------------------------------------");
+            System.out.println("--------------------------------------------------------------------");
             int numero = sc.nextInt();
             if (numero == 0) {
                 break;
@@ -65,8 +70,6 @@ public class Principal {
                         System.out.println("Ingrese valor:");
                         int valor = sc.nextInt();
                         Sensor s1 = new Sensor(tipo, valor);
-                        System.out.println("Caracteristicas del Sensor:");
-                        System.out.println(s1.toString());
                     } else {
                         System.out.println("Error, base de datos llena");
                     }
@@ -81,8 +84,14 @@ public class Principal {
                     break;
 
                 case 9:
-                    System.out.println("La informacion de los sensores tipo temperatura es:");
-                    System.out.println(Sensor.toStringTemperatura());
+                    System.out.println("La información de los sensores tipo temperatura es:");
+                    System.out.println(Sensor.toStringTemperatura(Sensor.sensores));
+                    break;
+
+                case 666:
+                    Sensor[] s = Sensor.ordenarSensores(Sensor.sensores);
+                    System.out.println(Sensor.toStringTemperatura(s));
+                    break;
             }
         }
     }

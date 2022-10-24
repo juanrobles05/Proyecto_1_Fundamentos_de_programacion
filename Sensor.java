@@ -51,13 +51,27 @@ public class Sensor {
     return "El total de sensores es de: " + posAnadir;
   }
 
-  public static String toStringTemperatura() {
+  public static String toStringTemperatura(Sensor[] n) {
     String tipo = "";
     for (int i = 0; i < Sensor.posAnadir; i++) {
-      if (Sensor.sensores[i].tipo.equals("temperatura")) {
-        tipo += Sensor.sensores[i].toString() + "\n";
+      if (n[i].tipo.equals("temperatura")) {
+        tipo += n[i].toString() + "\n";
       }
     }
     return tipo;
+  }
+
+  public static Sensor[] ordenarSensores(Sensor[] sensores) {
+    Sensor aux_elem;
+    for (int i = 0; i < Sensor.posAnadir - 1; i++) {
+      for (int j = 1; j < Sensor.posAnadir; j++) {
+        if (Sensor.sensores[j].getValor() < Sensor.sensores[j - 1].getValor()) {
+          aux_elem = sensores[j];
+          sensores[j] = sensores[j - 1];
+          sensores[j - 1] = aux_elem;
+        }
+      }
+    }
+    return sensores;
   }
 }

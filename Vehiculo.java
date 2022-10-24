@@ -73,7 +73,7 @@ public class Vehiculo {
     }
 
     public static String cantidadVehiculos() {
-        return "El total de vehiculos es de: " + posAnadir;
+        return "El total de vehículos es de: " + posAnadir;
     }
 
     public static String toStringVerdes() {
